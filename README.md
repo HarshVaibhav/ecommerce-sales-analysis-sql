@@ -1,17 +1,16 @@
-# E-Commerce Sales Analysis | SQL Server
+# 🛒 E-Commerce Sales Analysis | SQL Server
 
-## Project Overview
-Analyzed 100,000+ transactional records from the 
-Brazilian Olist E-Commerce dataset using advanced 
-SQL queries to evaluate sales performance, customer 
-behavior, and product profitability.
+## 📌 Project Overview
+Analyzed 100,000+ transactional records from the Brazilian 
+Olist E-Commerce dataset using advanced SQL queries to evaluate 
+sales performance, customer purchasing behavior, and product profitability.
 
-## Tools Used
+## 🛠️ Tools & Technologies
 - SQL Server Management Studio (SSMS)
 - SQL Server Express
 - Dataset: Brazilian Olist E-Commerce (Kaggle)
 
-## Business Questions Answered
+## 📊 Business Questions Answered
 1. What is the Total Revenue, Orders & Customers?
 2. Which Top 5 Products drive the most revenue?
 3. What is the Profit Margin % by category?
@@ -22,17 +21,27 @@ behavior, and product profitability.
 8. Who are the Top 10 Sellers by Revenue?
 9. How is the Delivery Performance?
 
-## Key Findings
-- Total Revenue: R$ 16,008,871.12
-- Top 5 categories drive 39.74% of total revenue
-- Average Order Value: R$ 160.99
-- 100% of customers are One-Time buyers
-- On-Time Delivery Rate: 91.89%
+## 💡 Key Business Findings
+- Analyzed 100,000+ orders across multiple product categories
+- Identified Top 5 revenue-generating categories
+- Computed Average Order Value (AOV) per delivered order
+- Segmented customers into Loyal, Returning, and One-Time buyers
+- Measured on-time delivery performance rate
 
-## SQL Concepts Used
+## 🧠 SQL Concepts Used
 - CTEs (Common Table Expressions)
 - Window Functions (RANK, SUM OVER)
 - Multiple Table JOINs
-- Aggregate Functions
+- Aggregate Functions (SUM, AVG, COUNT, MIN, MAX)
 - CASE WHEN Statements
 - Subqueries
+- FORMAT for date grouping
+
+## 📁 Files
+| File | Description |
+|------|-------------|
+| olist_analysis.sql | All 9 SQL analysis queries |
+| README.md | Project documentation |
+
+## 🔗 Dataset Source
+[Brazilian E-Commerce Dataset by Olist - Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)

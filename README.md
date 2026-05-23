@@ -23,10 +23,10 @@ sales performance, customer purchasing behavior, and product profitability.
 
 ## 💡 Key Business Findings
 - Analyzed 100,000+ orders across multiple product categories
-- Identified Top 5 revenue-generating categories
-- Computed Average Order Value (AOV) per delivered order
-- Segmented customers into Loyal, Returning, and One-Time buyers
-- Measured on-time delivery performance rate
+- Top 5 categories drive 48.32% of total revenue
+- Average Order Value: R$ 154.10
+- 97% of customers are One-Time buyers
+- On-Time Delivery Rate: 92.13%
 
 ## 🧠 SQL Concepts Used
 - CTEs (Common Table Expressions)

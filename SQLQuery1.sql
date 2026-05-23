@@ -1,7 +1,7 @@
 -- ============================================================
 -- E-Commerce Sales Analysis | SQL Server
 -- Dataset: Brazilian Olist E-Commerce (Kaggle)
--- Author: Your Name
+-- Author: Harsh Vaibhav
 -- Date: January 2026
 -- ============================================================
 

@@ -14,8 +14,8 @@
 -- ================================================================
 --  TABLE OF CONTENTS:
 --  STEP 1  → Total Revenue, Orders & Customers
---  STEP 2  → Top 5 Revenue Generating Products
---  STEP 3  → Profit Margin % by Category
+--  STEP 2  → Top 5 Revenue-Generating Categories
+--  STEP 3  → Post-Freight Contribution by Category
 --  STEP 4  → Average Order Value (AOV)
 --  STEP 5  → Customer Retention Analysis
 --  STEP 6  → Monthly Revenue Trend
@@ -49,7 +49,7 @@ FROM olist_order_payments_dataset;
 
 
 -- ================================================================
--- STEP 2: TOP 5 REVENUE GENERATING PRODUCTS
+-- STEP 2: TOP 5 REVENUE-GENERATING CATEGORIES
 -- ----------------------------------------------------------------
 -- Business Question:
 --   Which product categories drive the most revenue?
@@ -91,27 +91,27 @@ ORDER BY Revenue_Rank;
 
 
 -- ================================================================
--- STEP 3: PROFIT MARGIN % BY CATEGORY
+-- STEP 3: POST-FREIGHT CONTRIBUTION BY CATEGORY
 -- ----------------------------------------------------------------
 -- Business Question:
---   Which product categories are the most profitable
+--   Which product categories retain the most item-price value after freight
 --   after deducting shipping/freight costs?
 -- Metrics:
 --   → Total Revenue       : Sum of product prices
 --   → Total Shipping Cost : Sum of freight values
---   → Gross Profit        : Revenue minus Shipping Cost
---   → Profit Margin %     : (Gross Profit / Revenue) * 100
+--   → Contribution       : Item Price Revenue minus Freight
+--   → Post-Freight %      : (Contribution / Item Price Revenue) * 100
 -- Technique: CTE + JOIN + Aggregations
 -- ================================================================
 
 WITH category_financials AS (
-    -- Calculate revenue, shipping cost and gross profit per category
+    -- Calculate item-price revenue, shipping cost and post-freight contribution per category
     SELECT 
         p.product_category_name                          AS Product_Category,
         ROUND(SUM(oi.price), 2)                          AS Total_Revenue,
         ROUND(SUM(oi.freight_value), 2)                  AS Total_Shipping_Cost,
-        -- Gross Profit = Revenue - Shipping Cost
-        ROUND(SUM(oi.price) - SUM(oi.freight_value), 2)  AS Gross_Profit
+        -- Post-freight contribution = item-price revenue - freight
+        ROUND(SUM(oi.price) - SUM(oi.freight_value), 2)  AS Contribution_After_Freight
     FROM olist_order_items_dataset oi
     JOIN olist_products_dataset p
         ON oi.product_id = p.product_id
@@ -124,11 +124,11 @@ SELECT TOP 10
     Total_Shipping_Cost,
     Gross_Profit,
     -- Profit Margin % = (Gross Profit / Revenue) * 100
-    ROUND(Gross_Profit * 100.0 / Total_Revenue, 2)  AS Profit_Margin_Percentage
+    ROUND(Contribution_After_Freight * 100.0 / Total_Revenue, 2)  AS Post_Freight_Contribution_Percentage
 FROM category_financials
 -- Exclude categories with zero revenue to avoid divide by zero
 WHERE Total_Revenue > 0
-ORDER BY Profit_Margin_Percentage DESC;
+ORDER BY Post_Freight_Contribution_Percentage DESC;
 
 
 -- ================================================================

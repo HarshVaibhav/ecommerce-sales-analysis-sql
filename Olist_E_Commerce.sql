@@ -117,13 +117,13 @@ WITH category_financials AS (
         ON oi.product_id = p.product_id
     GROUP BY p.product_category_name
 )
--- Show Top 10 most profitable categories
+-- Show the 10 categories with the highest post-freight contribution percentage
 SELECT TOP 10
     Product_Category,
     Total_Revenue,
     Total_Shipping_Cost,
-    Gross_Profit,
-    -- Profit Margin % = (Gross Profit / Revenue) * 100
+    Contribution_After_Freight,
+    -- Post-freight contribution percentage = contribution after freight / item-price revenue
     ROUND(Contribution_After_Freight * 100.0 / Total_Revenue, 2)  AS Post_Freight_Contribution_Percentage
 FROM category_financials
 -- Exclude categories with zero revenue to avoid divide by zero

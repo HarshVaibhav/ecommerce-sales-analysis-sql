@@ -94,8 +94,7 @@ ORDER BY Revenue_Rank;
 -- STEP 3: POST-FREIGHT CONTRIBUTION BY CATEGORY
 -- ----------------------------------------------------------------
 -- Business Question:
---   Which product categories retain the most item-price value after freight
---   after deducting shipping/freight costs?
+--   Which product categories retain the most item-price value after freight?
 -- Metrics:
 --   → Total Revenue       : Sum of product prices
 --   → Total Shipping Cost : Sum of freight values
